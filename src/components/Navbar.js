@@ -2,8 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 
 
 
@@ -20,10 +19,10 @@ const Navbar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to='/'><FontAwesomeIcon icon={faTimes} /> USD</Link>
-                            </li>
+                                <Link className="nav-link" aria-current="page" to='/'><i className="fas fa-usd-square"></i>USD</Link>
+                            </li> &nbsp;
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to='/'>Sign In</Link>
+                                <Link className="text-light btn" aria-current="page" to='/sign-in'>Sign In</Link>
                             </li>
 
                               

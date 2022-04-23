@@ -5,10 +5,14 @@ import App from './App';
 import { HotelsProvider } from './context/hotel_context';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HotelsProvider>
-    <App/>
+  
+      <App />
+
+   
   </HotelsProvider>
 );
 
