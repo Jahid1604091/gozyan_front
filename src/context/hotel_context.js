@@ -2,7 +2,7 @@ import React,{useContext,useReducer,useEffect} from "react";
 
 import axios from "axios";
 import  {base_url as url}  from "../utils/constants";
-import hotels_reducer from "../reducer/hotels_reducer";
+import reducer from "../reducer/hotels_reducer";
 
 //import actions
 
@@ -20,7 +20,7 @@ const initialState = {
 }
 
 export const HotelsProvider = ({children}) =>{
-    const [state,dispatch] = useReducer(hotels_reducer,initialState)
+    const [state,dispatch] = useReducer(reducer,initialState)
     const fetchHotels = async (url) =>{
         // dispatch({
         //     type:GET_PRODUCTS_BEGIN
