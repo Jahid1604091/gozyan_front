@@ -3,12 +3,24 @@ import React,{useContext,useReducer,useEffect} from "react";
 import axios from "axios";
 import  {base_url as url}  from "../utils/constants";
 import reducer from "../reducer/hotels_reducer";
-import { GET_ALL_HOTELS_BEGIN, GET_ALL_HOTELS_FAIL, GET_ALL_HOTELS_SUCCESS, GET_PROPERTIES_BEGIN, 
-    GET_PROPERTIES_FAIL, 
-    GET_PROPERTIES_SUCCESS, 
+import { GET_ALL_HOTELS_BEGIN, 
+    GET_ALL_HOTELS_FAIL, 
+    GET_ALL_HOTELS_SUCCESS,
+  
+    GET_FEATURED_HOTELS_BEGIN,
+  
+    GET_FEATURED_HOTELS_FAIL,
+  
+    GET_FEATURED_HOTELS_SUCCESS,
+  
+    GET_LOCATIONS_BEGIN,
+    GET_LOCATIONS_FAIL,
+    GET_LOCATIONS_SUCCESS,
+  
     UPDATE_CHECK_IN, 
-    UPDATE_CHECK_OUT, 
-    UPDATE_SELECTED_HOTEL
+    UPDATE_CHECK_OUT,
+    UPDATE_SELECTED_LOCATION, 
+  
 } from "../action";
 
 
@@ -19,13 +31,16 @@ const HotelContext = React.createContext()
 const initialState = {
     properties_loading:false,
     properties_error:false,
-    hotels:[],
+    locations:[],
     selected_hotel:'',
     checkIn:'',
     checkOut:'',
     all_hotels:[],
+    featured_hotels:[],
+    facilities:[],
     loading_all_hotels:false,
     error_all_hotels:false,
+    fare:0,
     // featured_products:[],
     // single_product_loading:false,
     // single_product_error:false,
@@ -35,26 +50,61 @@ const initialState = {
 
 export const HotelsProvider = ({children}) =>{
     const [state,dispatch] = useReducer(reducer,initialState)
-    const fetchHotels = async (url) =>{
+    const fetchLocations = async (url) =>{
         dispatch({
-            type:GET_PROPERTIES_BEGIN
+            type:GET_LOCATIONS_BEGIN
         })
         try {
-            const response = await axios.get(`${url}/properties`)
-            const hotels = response.data
+            const response = await axios.get(`${url}/locations`)
+            const locations = [...new Set(response.data.map(item => item.location))]
+            
             dispatch({
-                type:GET_PROPERTIES_SUCCESS,
-                payload:hotels
+                type:GET_LOCATIONS_SUCCESS,
+                payload:locations
+              
             })
 
         } catch (error) {
             dispatch({
-                type:GET_PROPERTIES_FAIL,
+                type:GET_LOCATIONS_FAIL,
                 
             })
             console.log(error);
         }
     }
+
+        
+    useEffect(()=>{
+        fetchLocations(url)
+    },[])
+    
+    const fetchFeaturedHotels = async (url) =>{
+        dispatch({
+            type:GET_FEATURED_HOTELS_BEGIN
+        })
+        try {
+            const response = await axios.get(`${url}/properties`)
+            
+            dispatch({
+                type:GET_FEATURED_HOTELS_SUCCESS,
+                payload:response.data
+              
+            })
+
+        } catch (error) {
+            dispatch({
+                type:GET_FEATURED_HOTELS_FAIL,
+                
+            })
+            console.log(error);
+        }
+    }
+
+        
+    useEffect(()=>{
+        fetchFeaturedHotels(url)
+    },[])
+    
 
     //search
     const searchHotels = async (url,key) =>{
@@ -64,6 +114,9 @@ export const HotelsProvider = ({children}) =>{
         try {
             const response = await axios.get(`${url}/properties/search/${key}`)
             const hotels = response.data
+
+            
+           
             dispatch({
                 type:GET_ALL_HOTELS_SUCCESS,
                 payload:hotels
@@ -78,9 +131,9 @@ export const HotelsProvider = ({children}) =>{
         }
     }
 
-    const changeSelectedHotel = (e) =>{
+    const changeSelectedLocation = (e) =>{
         dispatch({
-            type:UPDATE_SELECTED_HOTEL,
+            type:UPDATE_SELECTED_LOCATION,
             payload:e.target.value
         })
         
@@ -125,11 +178,7 @@ export const HotelsProvider = ({children}) =>{
         }
     }
 
-    
-    useEffect(()=>{
-        fetchHotels(url)
-    },[])
-    
+
     
     useEffect(()=>{
         state.selected_hotel &&  searchHotels(url,state.selected_hotel)
@@ -140,7 +189,7 @@ export const HotelsProvider = ({children}) =>{
         <HotelContext.Provider value={{
             ...state,
             fetchSingleHotel,
-            changeSelectedHotel,
+            changeSelectedLocation,
             updateCheckIn,
             updateCheckOut,
             

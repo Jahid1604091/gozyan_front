@@ -2,83 +2,134 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-
+import Logo from '../assets/images/IMG-20220413-WA0006-removebg-preview.png'
+import HotelIcon from '../assets/images/asset 2.svg'
+import TourIcon from '../assets/images/asset 3.svg'
+import UsIcon from '../assets/images/usflag.png'
 
 
 
 const Navbar = () => {
+    const handleChange = () =>{}
     return (
-        <Wrapper>
-            <div className="container">
-                <nav className="navbar navbar-expand-lg">
-                    <div className="container-fluid">
-                        <Link className="navbar-brand" to="/">Go Zyan</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i className="fas fa-bars"></i>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to='/'><i className="fas fa-usd-square"></i>USD</Link>
-                            </li> &nbsp;
-                            <li className="nav-item">
-                                <Link className="text-light btn" aria-current="page" to='/sign-in'>Sign In</Link>
-                            </li>
-
-                              
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </nav>
+        <Wrapper className='shadow section'>
+            <div className="nav-center section-center">
+                <div className="nav-header">
+                    <Link to='/'><img src={Logo} alt="SomRentals" /></Link>
+                    <button className="nav-toggle" type='button' >btn</button>
+                </div>
+                <ul className="nav-links my-auto ">
+                    <li><Link to='/'><img src={HotelIcon} alt="SomRentals" /> Hotels</Link></li>
+                    <li><Link to='/'><img src={TourIcon} alt="SomRentals" />Apartments</Link></li>
+                </ul>
+                <div className='right-part d-flex'>
+                <label htmlFor="sort"><img src={UsIcon} alt="SomRentals" /> </label>
+                <select name="sort" onChange={handleChange} id="sort" value='USD'>
+                    <option value="">USD</option>
+                    <option value="">BDT</option>
+                 
+                </select>
+                    <Link to='/sign-in' className='btn btn-primary'>Sign In</Link>
+                </div>
             </div>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.section`
-.navbar{
-    min-height: 5rem;
-   
-    /* background-color: var(--clr-primary-4); */
-    /* .navbar-collapse{
-        transition:var(--transition);
-        opacity: 0.5;
-        transform: translateY(-300px);
+    background-color:var(--clr-grey-9);
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+  .nav-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: var(--max-width);
+  }
+
+  .nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      width: 165px;
+      margin-left: -15px;
+    }
+  }
+  
+  .nav-toggle {
+    
+    
+    /* margin-top:400px; */
+    background: transparent;
+    border: transparent;
+    color: var(--clr-primary-5);
+    cursor: pointer;
+ 
+  }
+  .nav-links {
+    display: none;
+    font-weight:600;
+
+    img{
+        width:50px ;
+        height:20px ;
     }
    
-    .navbar-collapse.show{
-        transition:var(--transition);
-        opacity: 1;
-        transform: translateY(0);
+  }
+
+  .right-part{
+      img{
+          width:30px ;
+          height:30px ;
+          border-radius:50% ;
+      }
+
+
+    select{
+        margin-top:3px ;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        text-transform: capitalize;
     }
-    */
-    .navbar-brand{
-        color: var(--clr-primary-4);
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 5px;
+  }
+
+  a.active{
+    border-bottom: 2px solid #17A2B8;
+  }
+  @media (min-width: 992px) {
+    .nav-toggle {
+      display: none;
     }
-    .navbar-toggler:focus,
-    .navbar-toggler:active,
-    .navbar-toggler-icon:focus {
-        outline: none;
-        box-shadow: none;
-        
+    .nav-center {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
     }
-    .navbar-toggler i{
-            color: var(--clr-primary-4);
-    }
-    .navbar-nav{
-       
-        
-            li a{
-            color: var(--clr-primary-4);
-            font-weight: 600;
-            text-transform: uppercase;
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      li {
+        margin: 0 0.5rem;
+      }
+      a {
+        color: var(--clr-grey-3);
+        font-size: .9rem;
+        text-transform: capitalize;
+        letter-spacing: var(--spacing);
+        padding: 0.5rem;
+        &:hover {
+          border-bottom: 2px solid #17A2B8;
         }
+      }
     }
-}
+    .notification-btn-wrapper {
+      display: grid;
+    }
+  }
 
 `
 export default Navbar
