@@ -11,7 +11,7 @@ const Home = () => {
             <ByType/>
             <Explore/>
             <Places/>
-            <FeaturedHotels/>
+          
         </div>
     );
 };

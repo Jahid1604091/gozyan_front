@@ -4,6 +4,7 @@ import SearchHotel from '../components/SearchHotel'
 import banner from '../assets/banner.jpg'
 
 import FeaturedHotels from '../components/FeaturedHotels';
+import Home from './Home/Home';
 const HomePage = () => {
   return (
     <Wrapper>
@@ -14,6 +15,12 @@ const HomePage = () => {
             <SearchHotel />
           </div>
 
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="section-center">
+          <Home />
         </div>
       </div>
 

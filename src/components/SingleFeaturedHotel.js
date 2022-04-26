@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Stars from './Stars'
 
 
-const SingleFeaturedHotel = ({ img_url, name, current_price, id }) => {
+const SingleFeaturedHotel = ({ img_url, name, current_price, id ,rating, location}) => {
     return (
         <Wrapper>
             <div className="container shadow">
@@ -12,6 +13,8 @@ const SingleFeaturedHotel = ({ img_url, name, current_price, id }) => {
                     <h6 className="name">{name}</h6>
                     <h6 className="name">{current_price} USD</h6>
                 </div>
+                    <h6 className="text-muted text-capitalize"><i className="fas fa-map-marker"></i> {location}</h6>
+                    <Stars rating={rating}/>
                 <Link to={`hotels/${id}`} className="overlay"><i className="fas fa-search"></i> view </Link>
             </div>
 

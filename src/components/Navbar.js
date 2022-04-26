@@ -13,23 +13,20 @@ const Navbar = () => {
     const handleChange = () =>{}
     return (
         <Wrapper className='shadow section'>
-            <div className="nav-center section-center">
+            <div className="nav-center section-center d-flex justify-content-between">
                 <div className="nav-header">
                     <Link to='/'><img src={Logo} alt="SomRentals" /></Link>
                     <button className="nav-toggle" type='button' >btn</button>
                 </div>
-                <ul className="nav-links my-auto ">
-                    <li><Link to='/'><img src={HotelIcon} alt="SomRentals" /> Hotels</Link></li>
-                    <li><Link to='/'><img src={TourIcon} alt="SomRentals" />Apartments</Link></li>
-                </ul>
+              
                 <div className='right-part d-flex'>
                 <label htmlFor="sort"><img src={UsIcon} alt="SomRentals" /> </label>
                 <select name="sort" onChange={handleChange} id="sort" value='USD'>
                     <option value="">USD</option>
-                    <option value="">BDT</option>
+              
                  
                 </select>
-                    <Link to='/sign-in' className='btn btn-primary'>Sign In</Link>
+                    <Link to='/dashboard' className='btn'>Sign In</Link>
                 </div>
             </div>
         </Wrapper>

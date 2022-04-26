@@ -75,7 +75,7 @@ const SearchHotel = () => {
                 </div>
                 <div className="col-sm-2">
                 <div className="text-center">
-                    <button onClick={submitHandler} type="submit" className="btn btn-primary">check availability</button>
+                    <button onClick={submitHandler} type="submit" className="btn">check availability</button>
                 </div>
                 </div>
 
@@ -94,7 +94,6 @@ const Wrapper = styled.section`
 }
 .card{
     border-radius:0 ;
-   
     margin-bottom:5px;
     text-align:center;
     border:none ;
@@ -113,20 +112,20 @@ select,input{
     border-radius:0 ;
     border:none ;
     margin:0 ;
-    height:30px ;
+    height:40px ;
 }
 
 select{
-    border-bottom-left-radius:20px;
+    border-bottom-left-radius:25px;
   
 }
 
 
 .btn{
     border-radius:0 ;
-    height:55px ;
+    height:65px ;
     margin:0 ;
-    margin-left:-5px ;
+   
 }
 
 `
