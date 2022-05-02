@@ -19,7 +19,7 @@ const Footer = () => {
                                     <h5 className="text-uppercase mb-4 font-weight-bold">
                                         Company name
                                     </h5>
-                                    <p>
+                                    <p className='text-light'>
                                         Here you can use rows and columns to organize your footer
                                         content. Lorem ipsum dolor sit amet, consectetur adipisicing
                                         elit.
@@ -33,16 +33,16 @@ const Footer = () => {
                                 <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                                     <h5 className="text-uppercase mb-4 font-weight-bold">Products</h5>
                                     <p>
-                                        <a className="text-dark">MDBootstrap</a>
+                                        <a>MDBootstrap</a>
                                     </p>
                                     <p>
-                                        <a className="text-dark">MDWordPress</a>
+                                        <a>MDWordPress</a>
                                     </p>
                                     <p>
-                                        <a className="text-dark">BrandFlow</a>
+                                        <a >BrandFlow</a>
                                     </p>
                                     <p>
-                                        <a className="text-dark">Bootstrap Angular</a>
+                                        <a>Bootstrap Angular</a>
                                     </p>
                                 </div>
 
@@ -55,16 +55,16 @@ const Footer = () => {
                                         Useful links
                                     </h5>
                                     <p>
-                                        <a className="text-dark">Your Account</a>
+                                        <a>Your Account</a>
                                     </p>
                                     <p>
-                                        <a className="text-dark">Become an Affiliate</a>
+                                        <a>Become an Affiliate</a>
                                     </p>
                                     <p>
-                                        <a className="text-dark">Shipping Rates</a>
+                                        <a>Shipping Rates</a>
                                     </p>
                                     <p>
-                                        <a className="text-dark">Help</a>
+                                        <a>Help</a>
                                     </p>
                                 </div>
 
@@ -74,10 +74,10 @@ const Footer = () => {
 
                                 <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                                     <h5 className="text-uppercase mb-4 font-weight-bold">Contact</h5>
-                                    <p><i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                                    <p><i className="fas fa-envelope mr-3"></i> info@gmail.com</p>
-                                    <p><i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                                    <p><i className="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                                    <p className='text-light'><i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                                    <p className='text-light'><i className="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                                    <p className='text-light'><i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                                    <p className='text-light'><i className="fas fa-print mr-3"></i> + 01 234 567 89</p>
                                 </div>
 
                             </div>
@@ -94,7 +94,7 @@ const Footer = () => {
                                 <div className="col-md-7 col-lg-8 text-center text-md-start">
 
                                     <div className="p-3">
-                                        &copy; 2020 Copyright
+                                        &copy; 2022 Copyright
                     
                                     </div>
 
@@ -145,7 +145,11 @@ const Footer = () => {
 
 const Wrapper = styled.section`
 footer{
-    background-color:var(--clr-grey-9);
+    background-color:var(--clr-primary);
+    color:var(--clr-primary-10) ;
+    a{
+        color:var(--clr-primary-9) !important ;
+    }
 
 }
     min-height: 5rem;

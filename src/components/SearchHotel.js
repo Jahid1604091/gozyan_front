@@ -7,79 +7,80 @@ import { useHotelContext } from '../context/hotel_context'
 const SearchHotel = () => {
 
     const navigate = useNavigate();
-    const {locations,selected_hotel,changeSelectedLocation,checkIn,checkOut,updateCheckIn,updateCheckOut} = useHotelContext();
-    
-    const [state,setState] = useState({
-       
-        rooms:1
+    const { locations, selected_hotel, changeSelectedLocation, checkIn, checkOut, updateCheckIn, updateCheckOut } = useHotelContext();
+
+    const [state, setState] = useState({
+
+        rooms: 1
     });
 
 
-    const submitHandler = (e) =>{
+    const submitHandler = (e) => {
         e.preventDefault();
         // const data = {key:selected_hotel,...state}
-        
-        if(checkIn && checkOut && state.rooms){
+
+        if (checkIn && checkOut && state.rooms) {
             navigate(`/hotels`);
         }
-        else{
-           alert('Please insert all required field')
+        else {
+            alert('Please insert all required field')
         }
 
     }
 
-    const handleChange = (e) =>{
-       
+    const handleChange = (e) => {
+
         setState({
             ...state,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
     return (
         <Wrapper>
-            <form className="row  align-items-center">
-                <div className="col-sm-4">
+            <form className="row text-center">
+                <div className="col-sm-3">
                     <div className="card bg-light">
-                      <span className='text-muted'>City / Hotel / Area / Resort</span>
-                
+                        <span className='text-muted'>City / Hotel / Area / Resort</span>
+
                     </div>
 
-                 <select name="location" value={selected_hotel && selected_hotel}  onChange={changeSelectedLocation} className='form-control'>
-                     <option value="" disabled>Select City/ Area/ Resort</option>
-                     {
-                         locations.map((hotel,idx)=><option onChange={changeSelectedLocation} key={idx}>{hotel}</option>)
-                     }
-                 </select>
+                    <select name="location" value={selected_hotel && selected_hotel} onChange={changeSelectedLocation} className='form-control'>
+                        
+                        <option value="" disabled>Select City/ Area/ Resort</option>
+                        {
+                            locations.map((location, idx) => <option onChange={changeSelectedLocation} key={idx}>{location}</option>)
+                        }
+                    </select>
                 </div>
                 <div className="col-sm-2">
                     <div className="card bg-light">
-                    <span className='text-muted'>Check in at</span>
-                   
+                        <span className='text-muted'>Check in at</span>
+
                     </div>
-                    <input type="date" name='checkIn' value={checkIn} onChange={updateCheckIn} className="form-control" id="specificSizeInputName" required/>
+                    <input type="date" name='checkIn' value={checkIn} onChange={updateCheckIn} className="form-control" id="specificSizeInputName" required />
                 </div>
                 <div className="col-sm-2">
                     <div className="card bg-light">
-                    <span className='text-muted'>Check Out On</span>
-                  
+                        <span className='text-muted'>Check Out On</span>
+
                     </div>
-                    <input type="date" name='checkOut' value={checkOut} onChange={updateCheckOut}  className="form-control" id="specificSizeInputName" required/>
+                    <input type="date" name='checkOut' value={checkOut} onChange={updateCheckOut} className="form-control" id="specificSizeInputName" required />
                 </div>
                 <div className="col-sm-2">
                     <div className="card bg-light">
-                    <span className='text-muted'>Rooms</span>
-                    
+                        <span className='text-muted'>Rooms</span>
+
                     </div>
                     <input type="text" name='rooms' value={state.rooms} onChange={handleChange} className="form-control" id="specificSizeInputName" placeholder="No of Room" required />
                 </div>
                 <div className="col-sm-2">
-                <div className="text-center">
-                    <button onClick={submitHandler} type="submit" className="btn">check availability</button>
-                </div>
+                    <div className="text-center">
+                        <button onClick={submitHandler} type="submit" className="btn"> check availability</button>
+                    </div>
                 </div>
 
-                
+
             </form>
         </Wrapper>
     )
@@ -113,12 +114,17 @@ select,input{
     border:none ;
     margin:0 ;
     height:40px ;
+    text-align:center ;
 }
 
-select{
+select::option{
+    text-align:center;
+}
+
+/* select{
     border-bottom-left-radius:25px;
   
-}
+} */
 
 
 .btn{

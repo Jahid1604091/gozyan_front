@@ -7,7 +7,7 @@ const FeaturedHotels = () => {
     const {featured_hotels}  = useHotelContext()
 
     return (
-        <div className='container'>
+    
             <div className="row">
             {
                featured_hotels.map(hotel=>(
@@ -17,7 +17,7 @@ const FeaturedHotels = () => {
                 ))
             }
             </div>
-        </div>
+      
     )
 }
 

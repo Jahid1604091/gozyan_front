@@ -4,6 +4,8 @@ import { Container, Tab, Row, Col, Nav } from 'react-bootstrap'
 
 import { FaLayerGroup, FaHistory, FaRegStar, FaCogs, FaUserCog, FaUserEdit, FaSignOutAlt, FaRegEnvelope, FaHotel, FaStar } from "react-icons/fa";
 import styled from 'styled-components';
+import AuthUser from '../components/AuthUser';
+import LoginPage from './LoginPage';
 const styles = {
     Overflows: {
         overflow: "hidden"
@@ -15,6 +17,13 @@ const styles = {
 
 
 const UserDashboard = () => {
+
+    const {getToken} = AuthUser();
+   
+    if(!getToken()){
+        return <LoginPage/>
+    }
+
     return (
         <Wrapper>
 
@@ -28,25 +37,25 @@ const UserDashboard = () => {
                         <div className="DashItemNames bg-dark text-white text-center py-5">
                             <Tab.Content>
                                 <Tab.Pane eventKey="first">
-                                    <h1>Dashboard</h1>
+                                    <h2>User Dashboard</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="second">
-                                    <h1>History</h1>
+                                    <h2>History</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="three">
-                                    <h1>Reeviews</h1>
+                                    <h2>Reeviews</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="four">
-                                    <h1>Support Ticket</h1>
+                                    <h2>Support Ticket</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="five">
-                                    <h1>Profile Setting</h1>
+                                    <h2>Profile Setting</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="six">
-                                    <h1>Change Password</h1>
+                                    <h2>Change Password</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="seven">
-                                    <h1>Log Out</h1>
+                                    <h2>Log Out</h2>
                                 </Tab.Pane>
                             </Tab.Content>
                         </div>
@@ -181,22 +190,22 @@ const UserDashboard = () => {
                                     </Row>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="second">
-                                    <h1>hello second</h1>
+                                    <h2>hello second</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="three">
-                                    <h1>hellooo three</h1>
+                                    <h2>hellooo three</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="four">
-                                    <h1>hellooo four</h1>
+                                    <h2>hellooo four</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="five">
-                                    <h1>hellooo five</h1>
+                                    <h2>hellooo five</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="six">
-                                    <h1>hellooo six</h1>
+                                    <h2>hellooo six</h2>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="seven">
-                                    <h1>hellooo seven</h1>
+                                    <h2>hellooo seven</h2>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>

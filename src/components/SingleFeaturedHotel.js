@@ -15,7 +15,7 @@ const SingleFeaturedHotel = ({ img_url, name, current_price, id ,rating, locatio
                 </div>
                     <h6 className="text-muted text-capitalize"><i className="fas fa-map-marker"></i> {location}</h6>
                     <Stars rating={rating}/>
-                <Link to={`hotels/${id}`} className="overlay"><i className="fas fa-search"></i> view </Link>
+                <Link to={`hotels/${id}`} className="overlay"><i className="fas fa-search"></i> view details</Link>
             </div>
 
         </Wrapper>
@@ -27,7 +27,8 @@ const Wrapper = styled.section`
 
 .container{
     padding: 10px;
-    margin: 20px;
+  
+    /* margin: 20px; */
     position: relative;
     cursor: pointer;
     transition: var(--transition);
@@ -56,10 +57,12 @@ const Wrapper = styled.section`
   .overlay{
     transition: var(--transition);
       position: absolute;
-      top: 40%;
-      left: 40%;
+      top: 30%;
+      left: 30%;
       font-weight: 700;
       opacity: 0;
+      color:var(--clr-primary-5) ;
+      text-transform:uppercase ;
   
   }
 }

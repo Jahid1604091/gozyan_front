@@ -8,7 +8,10 @@
     justify-content: space-between;
 }
 
-.card {}
+.explore-image {
+    padding: 10px;
+    padding-left: 0;
+}
 
 .card img {
     height: 180px;

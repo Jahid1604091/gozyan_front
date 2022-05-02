@@ -6,11 +6,20 @@ import Logo from '../assets/images/IMG-20220413-WA0006-removebg-preview.png'
 import HotelIcon from '../assets/images/asset 2.svg'
 import TourIcon from '../assets/images/asset 3.svg'
 import UsIcon from '../assets/images/usflag.png'
+import AuthUser from './AuthUser'
 
 
 
 const Navbar = () => {
     const handleChange = () =>{}
+    const {getToken,logout,token} = AuthUser();
+
+    const logoutUser = () =>{
+      if(token !=undefined){
+        logout();
+
+      }
+    }
     return (
         <Wrapper className='shadow section'>
             <div className="nav-center section-center d-flex justify-content-between">
@@ -26,7 +35,10 @@ const Navbar = () => {
               
                  
                 </select>
-                    <Link to='/dashboard' className='btn'>Sign In</Link>
+                {
+                  !getToken() ? <Link to='/login' className='btn'>Sign In</Link> : <Link to='/login' className='btn' onClick={logoutUser}>Logout</Link>
+                }
+                    
                 </div>
             </div>
         </Wrapper>
